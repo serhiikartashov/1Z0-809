@@ -1,4 +1,4 @@
-package certification.localization;
+package certification.localization.creation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,28 +10,11 @@ import java.util.Locale;
 public class CreationLocale {
 
     public static void main(String[] args) {
-        // specify only language
-        Locale france = new Locale("fr");
-        msg(france);
-        // specify language and country
-        Locale germany = new Locale("de", "DE");
-        msg(germany);
-        // specify language, country and variant
-        Locale japan = new Locale("ja", "JP", "MAC");
-        msg(japan);
-
         Locale ukraine = new Locale("uk", "UKR");
         msg(ukraine);
 
-
         Locale defaultLocale = Locale.getDefault();
         msg(defaultLocale);
-
-        Locale.Builder builder = new Locale.Builder();
-        builder.setLanguage("fr");
-        builder.setRegion("CA");
-        Locale locale = builder.build();
-        msg(locale);
 
         //Locale.setDefault(Locale.ITALY);
         //Locale.setDefault(Locale.FRANCE);
@@ -58,4 +41,43 @@ public class CreationLocale {
     static void msg(Object str){
         System.out.println(str);
     }
+
+    // 1
+    public static void builder(){
+        Locale.Builder builder = new Locale.Builder();
+        builder.setLanguage("fr");
+        builder.setRegion("CA");
+        Locale locale = builder.build();
+        msg(locale);
+    }
+
+    //2
+    public static void constructor(){
+        // specify only language
+        Locale france = new Locale("fr");
+        msg(france);
+        // specify language and country
+        Locale germany = new Locale("de", "DE");
+        msg(germany);
+        // specify language, country and variant
+        Locale japan = new Locale("ja", "JP", "MAC");
+
+        msg(japan);
+    }
+
+    // 3
+    public static void factoryMethod(){
+        Locale locale = Locale.forLanguageTag("fr-FR");
+        msg(locale);
+    }
+
+    // 4
+    public static void constants(){
+        Locale locale1 = Locale.GERMAN; // with country
+        Locale locale2 = Locale.GERMANY; // language only
+        Locale locale3 = Locale.CHINA;
+        Locale locale4 = Locale.CHINESE;
+    }
+
+
 }

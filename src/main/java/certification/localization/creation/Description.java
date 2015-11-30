@@ -1,19 +1,20 @@
-package certification.localization.localization;
+package certification.localization.creation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 /**
  * Created by Serhii K. on 11/30/2015.
  */
-public class MyLocalization {
+public class Description {
 
     public static void main(String[] args) {
 
         List<Locale.LanguageRange> list1 = new ArrayList<>();
         list1.add(new Locale.LanguageRange("en-ua"));
+
+        //zh-Hant-CN-x-private1-private2
         List<Locale> list2 = new ArrayList<>();
         list2.add(new Locale("fr", "FR"));
         list2.add(new Locale("pl", "POL"));

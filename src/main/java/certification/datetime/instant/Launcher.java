@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 public class Launcher {
 
     public static void main(String[] args) {
-        // Instant is useful for generating a time stamp to represent machine time.
+        // Instant is useful for generating a datetime stamp to represent machine datetime.
         Instant timestamp = Instant.now();
         // Gets the number of seconds from the Java epoch of 1970-01-01T00:00:00Z.
         System.out.println("timestamp: " + timestamp.getEpochSecond());     // timestamp: 1444654450
@@ -22,9 +22,9 @@ public class Launcher {
         long minutesFromEpoch = Instant.ofEpochSecond(0L).until(Instant.now(), ChronoUnit.MINUTES);
         System.out.println("Amount of minutes from java epoch: " + minutesFromEpoch);   // 24077574
 
-        // Convert "machine time" to human units
+        // Convert "machine datetime" to human units
         LocalDateTime humanTime = LocalDateTime.ofInstant(timestamp, ZoneId.systemDefault());
-        // different methods to operate time!
+        // different methods to operate datetime!
         // toString the same
         System.out.println("timestamp: " + timestamp);      // 2015-10-12T12:54:10.787Z
         System.out.println("humanTime: " + humanTime);      // 2015-10-12T13:54:10.787Z

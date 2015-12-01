@@ -1,6 +1,8 @@
 package certification.localization;
 
+import java.util.Enumeration;
 import java.util.Locale;
+import java.util.Properties;
 
 /**
  * Created by Serhii K. on 11/23/2015.
@@ -19,5 +21,15 @@ public class TestClass1 {
         System.out.println(locale1.equals(locale3)); // true
         System.out.println(locale2.equals(locale6)); // true
         System.out.println(locale4.equals(locale5)); // false
+
+        // -Djava.locale.providers=HOST,SPI,CLDR,JRE
+        Properties properties = System.getProperties();
+        Enumeration names = properties.propertyNames();
+        while (names.hasMoreElements()){
+            String key = (String)names.nextElement();
+            String value = properties.getProperty(key);
+
+            System.out.println(key+"="+value);
+        }
     }
 }

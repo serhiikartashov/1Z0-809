@@ -80,5 +80,5 @@ CLDR features
 http://cldr.unicode.org/cldr-features#TOC-Locale-specific-patterns-for-formatting-and-parsing:
 
 
-Internationalization in java 8
+Internationalization Enhancements in JDK 8
 https://docs.oracle.com/javase/8/docs/technotes/guides/intl/enhancements.8.html#api

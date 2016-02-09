@@ -14,3 +14,10 @@ public class Enclosing {
         System.out.println(nested.price);
     }
 }
+
+class MyClass{
+    public static void main(String[] args) {
+        Enclosing.Nested nested = new Enclosing.Nested();
+        // System.out.println(nested.price);
+    }
+}

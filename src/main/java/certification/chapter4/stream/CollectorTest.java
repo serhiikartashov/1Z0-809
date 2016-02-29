@@ -4,6 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.minBy;
+
 /**
  * Created by Serhii K. on 2/29/2016.
  */
@@ -49,24 +52,43 @@ public class CollectorTest {
         System.out.println(map3); // {5=[lions, bears], 6=[tigers]}
 
         Stream<String> ohMy7 = Stream.of("lions", "tigers", "bears");
-        Map<Integer, Set<String>> map4 = ohMy7.collect(Collectors.groupingBy(String::length, Collectors.toSet()));
+        Map<Integer, Set<String>> map4 = ohMy7
+                .collect(Collectors.groupingBy(String::length, Collectors.toSet()));
         System.out.println(map4); // {5=[lions, bears], 6=[tigers]}
 
         Stream<String> ohMy8 = Stream.of("lions", "tigers", "bears");
-        TreeMap<Integer, Set<String>> map5 = ohMy8.collect(Collectors.groupingBy(String::length, TreeMap::new, Collectors.toSet()));
+        TreeMap<Integer, Set<String>> map5 = ohMy8
+                .collect(Collectors.groupingBy(
+                        String::length,
+                        TreeMap::new,
+                        Collectors.toSet()));
         System.out.println(map5); // {5=[lions, bears], 6=[tigers]}
 
         Stream<String> ohMy9 = Stream.of("lions", "tigers", "bears");
         Map<Boolean, List<String>> map6 = ohMy9
-                .collect(Collectors.partitioningBy(s -> s.length() <= 5));
+                .collect(Collectors.partitioningBy(
+                        s -> s.length() <= 5
+                ));
         System.out.println(map6); // {false=[tigers], true=[lions, bears]}
+
+        Stream<String> ohMy11 = Stream.of("lions", "tigers", "bears");
+        Map<Integer, Long> map8 = ohMy11
+                .collect(Collectors.groupingBy(
+                        String::length,
+                        Collectors.counting()
+                ));
+        System.out.println(map8); // {5=2, 6=1}
 
         Stream<String> ohMy10 = Stream.of("lions", "tigers", "bears");
         Map<Integer, Optional<Character>> map7 = ohMy10
                 .collect(Collectors.groupingBy(
-                        String::length,
-                        Collectors.mapping(s -> s.charAt(0),
-                        Collectors.minBy(Comparator.naturalOrder()))));
+                                String::length,
+                                mapping(
+                                        (String s) -> s.charAt(0),
+                                        minBy(Comparator.naturalOrder()))
+                        )
+                );
+
         System.out.println(map7); // {5=Optional[b], 6=Optional[t]}
     }
 }

@@ -68,7 +68,7 @@ public class PrimitivesTest {
 
         double d = 1.0;
         DoubleToIntFunction f1 = x -> 1;
-        f1.applyAsInt(d);
+        int i = f1.applyAsInt(d);
     }
 
     private static int range(IntStream ints) {

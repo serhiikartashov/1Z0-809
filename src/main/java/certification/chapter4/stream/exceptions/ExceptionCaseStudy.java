@@ -1,6 +1,7 @@
 package certification.chapter4.stream.exceptions;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -24,8 +25,9 @@ public class ExceptionCaseStudy {
 
     public static void main(String[] args) throws IOException {
         ExceptionCaseStudy.create().stream().count();
+//        ExceptionCaseStudy.createSafe().stream().count();
 
-        // Supplier<List<String>> s = ExceptionCaseStudy::create; // DOES NOT COMPILE
+//         Supplier<List<String>> s = ExceptionCaseStudy::create; // DOES NOT COMPILE
 
         // variant 1
         Supplier<List<String>> s = () -> {
@@ -38,6 +40,7 @@ public class ExceptionCaseStudy {
 
         // variant 2
         Supplier<List<String>> s2 = ExceptionCaseStudy::createSafe;
+
 
 
     }

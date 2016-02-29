@@ -95,14 +95,18 @@ public class StreamMethods {
         List<String> one = Arrays.asList("Bonobo");
         List<String> two = Arrays.asList("Mama Gorilla", "Baby Gorilla");
         Stream<List<String>> animals = Stream.of(zero, one, two);
-        animals.flatMap(l -> l.stream()).forEach(System.out::println);
+//        animals.map(l -> l.stream()).forEach(System.out::println);
+        animals.flatMap(l -> l.stream()).map(String::length).forEach(System.out::println);
+//        Bonobo
+//        Mama Gorilla
+//        Baby Gorilla
 
         // sorted
         Stream<String> s_05 = Stream.of("brown-", "bear-");
         s_05.sorted().forEach(System.out::print); // bear-brown-
         System.out.println();
 
-        Stream<String> s_06 = Stream.of("black	bear", "brown	bear", "grizzly");
+        Stream<String> s_06 = Stream.of("black bear", "brown bear", "grizzly");
         long count = s_06.filter(sq -> sq.startsWith("g"))
                 .peek(System.out::println).count(); // grizzly
         System.out.println(count); // 1

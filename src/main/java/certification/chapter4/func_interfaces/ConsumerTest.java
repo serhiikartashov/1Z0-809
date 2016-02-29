@@ -1,9 +1,12 @@
 package certification.chapter4.func_interfaces;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * Created by Serhii K. on 2/15/2016.
@@ -23,5 +26,9 @@ public class ConsumerTest {
         b1.accept("chicken", 7);
         b2.accept("chick", 1);
         System.out.println(map);
+
+        Function<List<String>, String> ex1 = x -> x.get(0);
+
+        //UnaryOperator<Long> ex2 = (Long l) -> 3.14;
     }
 }

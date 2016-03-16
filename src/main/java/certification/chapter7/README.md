@@ -36,3 +36,18 @@ is a numeric value associated with a thread that is taken into consideration by 
 () -> 5
 () -> {return new Object();}
 
+#Liveness problems are those in which the application becomes unresponsive or in some kind of “stuck” state
+
+#Deadlock 
+occurs when two or more threads are blocked forever, each waiting on the other
+
+#Starvation 
+occurs when a single thread is perpetually denied access to a shared resource or lock. The thread is still active, 
+but it is unable to complete its work as a result of other threads constantly taking the resource that they 
+trying to access.
+
+#Livelock 
+occurs when two or more threads are conceptually blocked forever, although they are each still active and trying 
+to complete their task. Livelock is a special case of resource starvation in which two or more threads actively 
+try to acquire a set of locks, are unable to do so, and restart part of the process.
+

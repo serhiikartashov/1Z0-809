@@ -32,5 +32,5 @@ When using a hash-based Collection or Map such as HashSet, LinkedHashSet,
 HashMap, Hashtable, or WeakHashMap, make sure that the hashCode() of the 
 key objects that you put into the collection never changes while the object 
 is in the collection. 
-The bulletproof way to ensure this is to make your keys immutable, 
+The bulletproof way to ensure this is to make your keys **immutable**, 
 which has also other benefits.

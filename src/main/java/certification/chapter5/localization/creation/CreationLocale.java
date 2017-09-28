@@ -16,6 +16,14 @@ public class CreationLocale {
         Locale defaultLocale = Locale.getDefault();
         msg(defaultLocale);
 
+        Locale locale = Locale.forLanguageTag("ara-AE");
+        System.out.println("ara-AE: " + locale);
+        System.out.println(locale.getDisplayCountry());
+        System.out.println(locale.getDisplayLanguage());
+        System.out.println(locale.getDisplayLanguage(ukraine));
+        System.out.println(locale.getLanguage());
+        System.out.println("end");
+
         //Locale.setDefault(Locale.ITALY);
         //Locale.setDefault(Locale.FRANCE);
         Locale.setDefault(Locale.GERMAN);

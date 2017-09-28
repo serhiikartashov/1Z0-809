@@ -1,8 +1,6 @@
 package certification.chapter5.datetime.instant;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -28,6 +26,10 @@ public class Launcher {
         // toString the same
         System.out.println("timestamp: " + timestamp);      // 2015-10-12T12:54:10.787Z
         System.out.println("humanTime: " + humanTime);      // 2015-10-12T13:54:10.787Z
+
+
+        Instant instant = LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC);
+        System.out.println(instant);
 
     }
 

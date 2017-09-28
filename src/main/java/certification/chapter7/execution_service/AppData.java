@@ -19,12 +19,13 @@ public class AppData {
 
             // first lambda expression has a return type, the compiler
             // treats this as a Callable expression that supports checked exceptions.
-            service.submit(() -> {Thread.sleep(1000); return null;});
+            service.submit(() -> {Thread.sleep(10_000); return null;});
             // The second lambda expression does not return a value; therefore, the
             // compiler treats this as a Runnable expression. Since Runnable methods
             // do not support checked exceptions, the compiler will report an error
             // trying to compile this code snippet.
             // service.submit(() -> {Thread.sleep(1000);});
+            System.out.println("wait");
         } finally {
             if(service != null) service.shutdown();
         }

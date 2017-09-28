@@ -40,7 +40,10 @@ public class ObjectStreamSample {
         animals.add(new Animal("Tommy Tiger", 5, 'T'));
         animals.add(new Animal("Peter Penguin", 8, 'P'));
         File dataFile = new File("animal.data");
-        createAnimalsFile(animals, dataFile);
-        System.out.println(getAnimals(dataFile));
+        createAnimalsFile(animals, dataFile); // serialize
+        System.out.println(getAnimals(dataFile)); //deserialize
+
+        // Kryo: speed, less memory
+        // distributed computing: Ignite, Hazelcast
     }
 }

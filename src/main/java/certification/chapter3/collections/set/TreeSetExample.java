@@ -1,9 +1,6 @@
 package certification.chapter3.collections.set;
 
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Serhii K. on 2/9/2016.

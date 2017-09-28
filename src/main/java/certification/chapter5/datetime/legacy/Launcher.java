@@ -1,5 +1,6 @@
 package certification.chapter5.datetime.legacy;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -19,5 +20,8 @@ public class Launcher {
         LocalDateTime now = LocalDateTime.now();
         Instant instant = now.atZone(ZoneId.systemDefault()).toInstant();
         Date dateFromOld = Date.from(instant);
+
+        Timestamp timestamp1 = new Timestamp(new Date().getTime());
+        Timestamp timestamp2 = Timestamp.from(instant);
     }
 }

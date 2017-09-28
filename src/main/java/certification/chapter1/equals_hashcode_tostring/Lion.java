@@ -17,16 +17,17 @@ public class Lion {
         this.name = name;
     }
 
-    /*@Override
+    // validate equality only by id
+    @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Lion)) return false;
         Lion otherLion = (Lion) obj;
         return this.idNumber == otherLion.idNumber;
-    }*/
-
-    public boolean equals (Object obj){
-        return EqualsBuilder.reflectionEquals(this, obj);
     }
+
+    /*public boolean equals (Object obj){
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }*/
 
     public static void main(String[] args) {
         Lion l1 = new Lion(1, 1, "name1");

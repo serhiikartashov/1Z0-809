@@ -16,20 +16,39 @@ public class Card {
         suit = s;
     }
 
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Card)) return false;
-        Card c = (Card) obj;
-        return rank.equals(c.rank) && suit.equals(c.suit);
+    // auto generated
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card)) return false;
+
+        Card card = (Card) o;
+
+        if (!rank.equals(card.rank)) return false;
+        return suit.equals(card.suit);
     }
 
+    //    public boolean equals(Object obj) {
+//        if (!(obj instanceof Card)) return false;
+//        Card c = (Card) obj;
+//        return rank.equals(c.rank) && suit.equals(c.suit);
+//    }
+
+//    public int hashCode() {
+//        //return rank.hashCode();
+//        return HashCodeBuilder.reflectionHashCode(this);
+//        /*return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
+//                // if deriving: appendSuper(super.hashCode()).
+//                append(rank).
+//                append(suit).
+//                toHashCode();*/
+//    }
+
+    @Override
     public int hashCode() {
-        //return rank.hashCode();
-        return HashCodeBuilder.reflectionHashCode(this);
-        /*return new HashCodeBuilder(17, 31). // two randomly chosen prime numbers
-                // if deriving: appendSuper(super.hashCode()).
-                append(rank).
-                append(suit).
-                toHashCode();*/
+        int result = rank.hashCode();
+        result = 31 * result + suit.hashCode();
+        return result;
     }
 
     public static void main(String[] args) {

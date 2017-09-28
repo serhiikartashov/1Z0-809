@@ -11,6 +11,10 @@ public class Outer {
         final int width = 20; // final
         // int width = 20; // effectively final
         // width = 1; // DOES NOT COMPILE  multiply() method!
+//      1.  They do not have an access specifier.
+//      2.  They cannot be declared static and cannot declare static fields or methods.
+//      3.  They have access to all fields and methods of the enclosing class.
+//      4.  They do not have access to local variables of a method unless those variables are final or effectively final. More on this shortly.
         class Inner {
 
             public void multiply() {

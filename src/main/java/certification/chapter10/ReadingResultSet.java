@@ -14,9 +14,9 @@ public class ReadingResultSet {
     public static void main(String[] args) throws SQLException {
         Map<Integer, String> idToNameMap = new HashMap<>();
         try (Connection conn = DriverManager.getConnection(url);
-             Statement stmt = conn.createStatement()){
+             Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("select id, name from species");
-            while(rs.next()) {
+            while (rs.next()) {
 //                int id = rs.getInt("id");
                 int id = rs.getInt(1);
 //                String name = rs.getString("name");

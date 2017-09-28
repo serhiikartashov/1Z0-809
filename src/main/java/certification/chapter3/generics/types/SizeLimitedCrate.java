@@ -21,6 +21,4 @@ public class SizeLimitedCrate<T, U> {
     }
 }
 
-class Elephant {
-
-}
+class Elephant {}

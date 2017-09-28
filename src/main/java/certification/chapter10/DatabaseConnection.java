@@ -2,10 +2,7 @@ package certification.chapter10;
 
 import java.sql.*;
 
-/**
- * Created by Serhii K. on 3/17/2016.
- */
-public class DatabaseConnnection {
+public class DatabaseConnection {
 
     public static void main(String[] args) throws SQLException {
         String url = "jdbc:derby:zoo";

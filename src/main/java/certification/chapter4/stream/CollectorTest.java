@@ -90,5 +90,26 @@ public class CollectorTest {
                 );
 
         System.out.println(map7); // {5=Optional[b], 6=Optional[t]}
+
+        String[] ids = {"1", "2", "3"};
+        List<String> entities = Arrays.asList(ids);
+
+        Map<Integer, String> mapIds = entities.stream()
+                .collect(Collectors.toMap(e -> entities.indexOf(e), e -> e));
+
+        System.out.println(mapIds); // {0=1, 1=2, 2=3}
+
+        String[] arr1 = { "a", "b", "c", "d" };
+        String[] arr2 = { "e", "f", "g" };
+        String[] arr3 = { "h", "i", "j" };
+        Stream<String> stream1 = Stream.of(arr1);
+        Stream<String> stream2 = Stream.of(arr2);
+        Stream<String> stream3 = Stream.of(arr3);
+
+        //use Stream.of(T... values)
+        Stream<String> stream = Stream.of(stream1, stream2, stream3).flatMap(x -> x);
+
+        String[] arr = stream.toArray(String[]::new);
+        System.out.println(Arrays.toString(arr));
     }
 }

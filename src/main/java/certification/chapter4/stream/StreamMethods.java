@@ -1,9 +1,6 @@
 package certification.chapter4.stream;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -114,5 +111,66 @@ public class StreamMethods {
         List<String> list = Arrays.asList("Toby", "Anna", "Leroy", "Alex");
         list.stream().filter(n -> n.length() == 4).sorted()
                 .limit(2).forEach(System.out::println);
+
+        System.out.println();
+
+
+        Map<String, String> originMap = new HashMap<>();
+        originMap.put("k1", "v1");
+        originMap.put("k2", "v2");
+        originMap.put("k3", "v3");
+
+        Map<String, String> destMap = new HashMap<>();
+        destMap.put("k2", "v2");
+        destMap.put("k3", "v3");
+        destMap.put("k4", "v4");
+
+        Map<String, String> joint = originMap
+                .entrySet()
+                .stream()
+                .filter(key -> destMap.entrySet().contains(key))
+                .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+
+        joint.forEach((k,v) -> System.out.println("Joint\t Key: " + k + " | Value: " + v));
+        System.out.println();
+
+        // find by key only
+        Map<String, String> joint2 = originMap
+                .entrySet()
+                .stream()
+                .filter(key -> destMap.keySet().contains(key.getKey()))
+                .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+
+        joint2.forEach((k,v) -> System.out.println("Joint2\t Key: " + k + " | Value: " + v));
+        System.out.println();
+
+
+        Map<String, String> right = originMap
+                .entrySet()
+                .stream()
+                .filter(key -> !destMap.entrySet().contains(key))
+                .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+
+        right.forEach((k,v) -> System.out.println("Right\t Key: " + k + " | Value: " + v));
+        System.out.println();
+
+        Map<String, String> left = destMap
+                .entrySet()
+                .stream()
+                .filter(key -> !originMap.entrySet().contains(key))
+                .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+
+        left.forEach((k,v) -> System.out.println("Left\t Key: " + k + " | Value: " + v));
+        System.out.println();
+
+//        Integer date,
+//        List<Long> securityIds
+//            Map<Long, Security> map =  securitiesByDate.get(date)
+//                    .stream()
+//                    .filter(security -> securityIds
+//                            .stream()
+//                            .anyMatch(securityId -> security.getSecurityId().equals(securityId))
+//                    )
+//                    .collect(Collectors.toMap(Security::getSecurityId, p -> p));
     }
 }

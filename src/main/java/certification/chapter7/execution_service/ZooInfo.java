@@ -14,13 +14,15 @@ public class ZooInfo {
             service = Executors.newSingleThreadExecutor();
             System.out.println("begin");
             service.execute(() -> System.out.println("Printing zoo inventory"));
-            service.execute(() -> {for(int i=0; i<3; i++)
-                        System.out.println("Printing record: "+i);}
+            service.execute(() -> {
+                        for (int i = 0; i < 3; i++)
+                            System.out.println("Printing record: " + i);
+                    }
             );
             service.execute(() -> System.out.println("Printing zoo inventory"));
             System.out.println("end");
         } finally {
-            if(service != null) service.shutdown();
+            if (service != null) service.shutdown();
 
             // attempts to stop all running tasks and returns a List<Runnable> of tasks that were submitted to the
             // thread executor but that were never started

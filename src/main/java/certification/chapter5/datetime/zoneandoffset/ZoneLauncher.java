@@ -1,5 +1,6 @@
 package certification.chapter5.datetime.zoneandoffset;
 
+import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
@@ -7,14 +8,30 @@ import java.time.zone.ZoneRules;
 import java.time.zone.ZoneRulesProvider;
 import java.util.*;
 
+import static java.lang.System.*;
+
 public class ZoneLauncher {
 
     public static void main(String[] args) {
         printAllTimeZones();
-        zonedDateTime();
+        out.println(ZoneId.systemDefault());
+        out.println(ZoneId.of("Asia/Tokyo"));
+        out.println(ZoneId.of("UTC"));
+        out.println();
+        out.println(OffsetDateTime.now(ZoneId.of("UTC")));
+        out.println(OffsetDateTime.now(ZoneId.of("Asia/Tokyo")));
+        out.println(OffsetDateTime.now(ZoneId.systemDefault()));
+        out.println();
+        out.println(Timestamp.from(OffsetDateTime.now(ZoneId.of("UTC")).toInstant()));
+        out.println(Timestamp.from(OffsetDateTime.now(ZoneId.of("Asia/Tokyo")).toInstant()));
+        out.println(Timestamp.from(OffsetDateTime.now(ZoneId.systemDefault()).toInstant()));
+
+        out.println(Timestamp.valueOf(OffsetDateTime.now().atZoneSameInstant(ZoneOffset.UTC).toLocalDateTime()));
+
+//        zonedDateTime();
 
         ZoneRules kiev = ZoneRulesProvider.getRules("Europe/Kiev", false);
-        System.out.println(kiev.getTransitionRules());
+        out.println(kiev.getTransitionRules());
 
         // RESTRICTION: you cannot receive all zones by continents
 
@@ -49,7 +66,7 @@ public class ZoneLauncher {
         ZonedDateTime departure = ZonedDateTime.of(leaving, leavingZone);
 
         String out1 = departure.format(format);
-        System.out.printf("LEAVING:  %s (%s)%n", out1, leavingZone);
+        out.printf("LEAVING:  %s (%s)%n", out1, leavingZone);
 
         // Flight is 10 hours and 50 minutes, or 650 minutes
         ZoneId arrivingZone = ZoneId.of("Asia/Tokyo");
@@ -57,13 +74,13 @@ public class ZoneLauncher {
                 .plusHours(10).plusMinutes(50);
 
         String out2 = arrival.format(format);
-        System.out.printf("ARRIVING: %s (%s)%n", out2, arrivingZone);
+        out.printf("ARRIVING: %s (%s)%n", out2, arrivingZone);
 
         // літній час
         if (arrivingZone.getRules().isDaylightSavings(arrival.toInstant())) {
-            System.out.printf("  (%s daylight saving time will be in effect.)%n", arrivingZone);
+            out.printf("  (%s daylight saving time will be in effect.)%n", arrivingZone);
         } else {
-            System.out.printf("  (%s standard time will be in effect.)%n", arrivingZone);
+            out.printf("  (%s standard time will be in effect.)%n", arrivingZone);
         }
     }
 
@@ -75,15 +92,15 @@ public class ZoneLauncher {
         OffsetDateTime offsetDate = OffsetDateTime.of(localDate, offset);
         OffsetDateTime lastThursday =
                 offsetDate.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));
-        System.out.printf("The last Thursday in October 2015 is the %sth.%n",
+        out.printf("The last Thursday in October 2015 is the %sth.%n",
                 lastThursday.getDayOfMonth());
 
 
         OffsetDateTime odt = OffsetDateTime.of(LocalDateTime.now(), ZoneOffset.of("-4"));
-        System.out.println(odt);    // 2015-10-13T11:14:03.073-04:00
+        out.println(odt);    // 2015-10-13T11:14:03.073-04:00
 
         OffsetTime ot = OffsetTime.ofInstant(Instant.now(), ZoneId.of("America/Los_Angeles"));
         //OffsetTime ot1 = OffsetTime.ofInstant(Instant.now(), ZoneOffset.of("-2"));
-        System.out.println(ot);     // 01:14:03.073-07:00
+        out.println(ot);     // 01:14:03.073-07:00
     }
 }

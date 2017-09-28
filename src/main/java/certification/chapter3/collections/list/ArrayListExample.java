@@ -9,11 +9,11 @@ public class ArrayListExample {
 
     public static void main(String[] args) {
         //        ArrayList Creation
-        List arraylistA = new ArrayList();
-        List arraylistB = new ArrayList();
+        List<Integer> arraylistA = new ArrayList<>();
+        List<String> arraylistB = new ArrayList<>();
         //        Adding elements to the ArrayList
         for (int i = 0; i < 5; i++) {
-            arraylistA.add(new Integer(i));
+            arraylistA.add(i);
         }
         arraylistB.add("beginner");
         arraylistB.add("java");
@@ -79,7 +79,7 @@ public class ArrayListExample {
                 + arraylistA.isEmpty());
         System.out.println();
         //        Checking for Equality of ArrayLists
-        ArrayList arraylistC = new ArrayList(arraylistA);
+        ArrayList arraylistC = new ArrayList<>(arraylistA);
         System.out.println("arraylistA.equals(arraylistC)? "
                 + arraylistA.equals(arraylistC));
         System.out.println();

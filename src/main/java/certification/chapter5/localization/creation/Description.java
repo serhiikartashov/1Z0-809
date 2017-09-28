@@ -47,6 +47,7 @@ public class Description {
                     !locale1.getUnicodeLocaleKeys().isEmpty() ||
                     !locale1.getScript().isEmpty()) {
                 System.out.println(locale1);
+                System.out.println("ISO3: "+ locale1.getISO3Language());
                 System.out.println("Display Name: " + locale1.getDisplayName());
                 System.out.println("Script: " + locale1.getScript());
                 System.out.println("UnicodeLocaleAttributes: " + locale1.getUnicodeLocaleAttributes());

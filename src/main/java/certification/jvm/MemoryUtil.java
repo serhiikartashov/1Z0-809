@@ -23,10 +23,10 @@ public class MemoryUtil {
     private static final String SPACES = "                    ";
     private static Map<String, MemRegion> memRegions;
 
-    // Вспомогательный класс для хранения информации о регионах памяти
+    // Utility class for keeping information about regions of memory
     private static class MemRegion {
-        private boolean heap;        // Признак того, что это регион кучи
-        private String normName;    // Имя, доведенное пробелами до универсальной длины
+        private boolean heap;        // Flag which identify region as part of heap
+        private String normName;    // Name, extended to max length using backspaces
 
         public MemRegion(String name, boolean heap) {
             this.heap = heap;
@@ -43,14 +43,14 @@ public class MemoryUtil {
     }
 
     static {
-        // Запоминаем информацию обо всех регионах памяти
+        // Save information about all memory's regions
         memRegions = new HashMap<String, MemRegion>(ManagementFactory.getMemoryPoolMXBeans().size());
         for (MemoryPoolMXBean mBean : ManagementFactory.getMemoryPoolMXBeans()) {
             memRegions.put(mBean.getName(), new MemRegion(mBean.getName(), mBean.getType() == MemoryType.HEAP));
         }
     }
 
-    // Обработчик сообщений о сборке мусора
+    // Message Processor for garbage collection
     private static NotificationListener gcHandler = new NotificationListener() {
         @Override
         public void handleNotification(Notification notification, Object handback) {
@@ -71,7 +71,7 @@ public class MemoryUtil {
     };
 
     /**
-     * Выводит в stdout информацию о текущем состоянии различных разделов памяти.
+     * Print to stdout info about current state of different memory parts
      */
     public static void printUsage(boolean heapOnly) {
         for (MemoryPoolMXBean mBean : ManagementFactory.getMemoryPoolMXBeans()) {
@@ -82,7 +82,7 @@ public class MemoryUtil {
     }
 
     /**
-     * Запускает процесс мониторинга сборок мусора.
+     * Start monitoring process of garbage collection
      */
     public static void startGCMonitor() {
         for (GarbageCollectorMXBean mBean : ManagementFactory.getGarbageCollectorMXBeans()) {
@@ -91,7 +91,7 @@ public class MemoryUtil {
     }
 
     /**
-     * Останавливает процесс мониторинга сборок мусора.
+     * Start monitoring process of garbage collection
      */
     public static void stopGCMonitor() {
         for (GarbageCollectorMXBean mBean : ManagementFactory.getGarbageCollectorMXBeans()) {
